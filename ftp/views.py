@@ -1,5 +1,5 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.http import HttpResponse
 from ftp.models import FtpServer, File
 from django.core.urlresolvers import reverse
 
@@ -32,4 +32,4 @@ def search(request):
             {'files': list(files), 'query': query}
         )
     except KeyError:
-        return HttpResponseRedirect(reverse('ftp.views.index'))
+        return redirect('ftp.views.index')
